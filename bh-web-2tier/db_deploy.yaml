@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: bh-db
+  name: bh-db
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: bh-db
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: bh-db
+    spec:
+      containers:
+      - image: mysql
+        name: mysql
+        ports:
+        - containerPort: 3306
+        resources:
+          requests:
+            memory: 50M
+            cpu: 70m  # 1vcpu == 1000 millicore
+          limits:
+            memory: 200M
+            cpu: 150m
+        envFrom:
+        - secretRef:
+            name: bh-db-cred
+        
+status: {}

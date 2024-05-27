@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: bh-web-deploy
+  name: bh-web-deploy
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: bh-web-deploy
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: bh-web-deploy
+    spec:
+      containers:
+      - image: varmadbk/bh-customer:appv1
+        name: bh-customer
+        ports:
+        - containerPort: 80
+        resources: {}
+        env:
+        - name: myapp
+          value: dev
+status: {}

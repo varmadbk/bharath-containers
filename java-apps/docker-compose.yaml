@@ -1,0 +1,12 @@
+version: '3.8'
+services:
+  bhspring:
+    image: docker.io/varmadbk/bhspring:webappv1
+    build:
+      context: .
+      dockerfile: spring.dockerfile
+    container_name: bh-maven-c1
+    command: sleep 10000
+    ports:
+      - 1234:8080
+  

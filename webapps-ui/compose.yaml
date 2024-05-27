@@ -1,0 +1,22 @@
+version: '3.8'
+services:
+  bh-ui-app:
+    image: bhbmotest1:nginxuiv2
+    build: .
+    container_name: bh-we-ui-c1
+    ports:
+      - 1235:80
+  bh-php-app:
+    container_name: bh-php
+    image: adminer:latest
+    ports:
+      - 1236:8080
+    depends_on: 
+      - bh-mysql-db
+  bh-mysql-db:
+    container_name: bhdb1
+    environment:
+      MYSQL_ROOT_PASSWORD: TEST$12
+      MYSQL_USER: BHA
+      MYSQL_PASSWORD: TEST$12
+    image: mysql

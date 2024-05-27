@@ -1,0 +1,10 @@
+version: '3.8'
+services:
+  bh-appcheck:
+    image: bh-customer:appv1
+    build: .
+    container_name: bhweb1
+    environment:
+      myapp: dev
+    ports:
+      - 2244:80

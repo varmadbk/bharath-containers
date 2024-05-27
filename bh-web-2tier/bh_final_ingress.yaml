@@ -1,0 +1,19 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: bh-ingress-test
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+spec:
+  ingressClassName: nginx # which product 
+  rules:
+  - host: bharath.adhocnet.org 
+    http:
+      paths:
+      - path: /  # home page 
+        pathType: Prefix
+        backend:
+          service:
+            name: bh-weblb # internal LB 
+            port:
+              number: 8080 # lb port 
